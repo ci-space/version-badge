@@ -1,0 +1,35 @@
+name: version-badge
+description: generate SVG badges with version of language or dependency
+inputs:
+    out:
+        description: path to output file
+        required: true
+    from:
+        description: Path to dependencies file (go.mod, composer.json, package.json)
+        required: false
+    object:
+        description: Dependency name
+        required: false
+    style:
+        description: ""
+        required: false
+    font:
+        description: 'Default: Verdana'
+        required: false
+    font-size:
+        description: 'Default: 11'
+        required: false
+    short-object-name:
+        description: ""
+        required: false
+runs:
+    using: docker
+    image: docker://ghcr.io/ci-space/version-badge:v0.1.-1
+    args:
+        - ${{ inputs.out }}
+        - ${{ inputs.from != '' && format('--from={0}', inputs.from) || '' }}
+        - ${{ inputs.object != '' && format('--object={0}', inputs.object) || '' }}
+        - ${{ inputs.style != '' && format('--style={0}', inputs.style) || '' }}
+        - ${{ inputs.font != '' && format('--font={0}', inputs.font) || '' }}
+        - ${{ inputs.font-size != '' && format('--font-size={0}', inputs.font-size) || '' }}
+        - ${{ inputs.short-object-name != '' && '--short-object-name' || '' }}

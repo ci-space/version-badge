@@ -1,0 +1,44 @@
+name: badges
+
+on:
+  push:
+    paths:
+      - 'go.mod'
+
+permissions:
+  contents: read
+  pull-requests: read
+  checks: write
+
+jobs:
+  go:
+    name: code-lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4 # action page: <https://github.com/actions/setup-go>
+        with:
+          go-version: stable
+
+      - name: Install Go dependencies
+        run: go mod download
+
+      - name: Generate go version badge
+        run: go run main.go docs/icons/go.svg
+
+      - name: Generate go-badge version badge
+        run: go run main.go docs/icons/go-badge.svg --object=github.com/essentialkaos/go-badge --short-object-name
+
+      - name: Generate depexplorer version badge
+        run: go run main.go docs/icons/depexplorer.svg --object=github.com/artarts36/depexplorer --short-object-name
+
+      - name: Commit changes
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add docs/icons/go.svg docs/icons/go-badge.svg docs/icons/depexplorer.svg
+          git commit -m "chore: update badges"
+          git push
