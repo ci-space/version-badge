@@ -22,7 +22,6 @@ func (f Font) Valid() bool {
 		return true
 	case FontComicSansMS:
 		return true
-		return true
 	case FontUnspecified:
 		return false
 	}

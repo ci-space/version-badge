@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   go:
-    name: code-lint
+    name: go
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -35,10 +35,14 @@ jobs:
       - name: Generate depexplorer version badge
         run: go run main.go docs/icons/depexplorer.svg --object=github.com/artarts36/depexplorer --short-object-name
 
-      - name: Commit changes
+      - name: Add changed files to git
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
           git add docs/icons/go.svg docs/icons/go-badge.svg docs/icons/depexplorer.svg
-          git commit -m "chore: update badges"
-          git push
+
+      - name: Push changes
+        uses: actions-go/push@master
+        with:
+          commit-message: 'chore: update badges'
+          remote: origin
