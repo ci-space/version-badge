@@ -54,6 +54,11 @@ func main() {
 			{
 				Name: "short-object-name",
 			},
+			{
+				Name:        "color",
+				WithValue:   true,
+				Description: "Background color for right side. HEX or blue/green/brightgreen",
+			},
 		},
 	}
 
@@ -67,6 +72,7 @@ func run(ctx *cli.Context) error {
 		Font:      ctx.Opts["font"],
 		Out:       ctx.Args["out"],
 		ShortName: ctx.HasOpt("short-object-name"),
+		Color:     ctx.Opts["color"],
 	}
 
 	if fontSize, ok := ctx.Opts["font-size"]; ok {

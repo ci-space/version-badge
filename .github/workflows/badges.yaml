@@ -27,7 +27,7 @@ jobs:
         run: go mod download
 
       - name: Generate go version badge
-        run: go run main.go docs/icons/go.svg
+        run: go run main.go docs/icons/go.svg --color=blue
 
       - name: Generate go-badge version badge
         run: go run main.go docs/icons/go-badge.svg --object=github.com/essentialkaos/go-badge --short-object-name

@@ -26,6 +26,7 @@ type Params struct {
 	Style    string
 	Font     string
 	FontSize int
+	Color    string
 
 	Out string
 }
@@ -73,7 +74,7 @@ func (c *Command) makeBadge(params Params) generator.Badge {
 		Style:    generator.Style(params.Style),
 		Font:     generator.Font(params.Font),
 		FontSize: params.FontSize,
-		Color:    "#97ca00",
+		Color:    generator.ResolveColor(params.Color),
 	}
 
 	if !bg.Style.Valid() {

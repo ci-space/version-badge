@@ -1,8 +1,8 @@
 # version-badge
 
 ![](./docs/icons/go.svg)
-![](./docs/icons/go-badge.svg)
-![](./docs/icons/depexplorer.svg)
+[![](./docs/icons/go-badge.svg)](https://github.com/essentialkaos/go-badge)
+[![](./docs/icons/depexplorer.svg)](https://github.com/ArtARTs36/depexplorer)
 
 version-badge - is console app and GitHub Action for generate SVG badges with version of language or dependency
 
