@@ -5,7 +5,7 @@ type Style string
 const (
 	StyleUnspecified Style = ""
 	StyleFlat        Style = "flat"
-	StyleFlagSquare  Style = "flag-square"
+	StyleFlagSquare  Style = "flat-square"
 	StylePlastic     Style = "plastic"
 )
 

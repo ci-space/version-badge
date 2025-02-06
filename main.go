@@ -73,6 +73,7 @@ func run(ctx *cli.Context) error {
 		Out:       ctx.Args["out"],
 		ShortName: ctx.HasOpt("short-object-name"),
 		Color:     ctx.Opts["color"],
+		Style:     ctx.Opts["style"],
 	}
 
 	if fontSize, ok := ctx.Opts["font-size"]; ok {
