@@ -11,6 +11,11 @@ Supported dependency managers:
 * Composer
 * NPM
 
+Supported fonts:
+* Arial
+* Comic Sans MS
+* Verdana
+
 ## Usage
 
 ### Generate badge with language version
@@ -29,4 +34,10 @@ Supported dependency managers:
 
 ```
 ./version-badge lang.svg --from=go.mod1
+```
+
+### Generate badge with Comic Sans MS
+
+```
+./version-badge lang.svg --font=comic-sans-ms
 ```

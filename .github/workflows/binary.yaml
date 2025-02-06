@@ -1,0 +1,21 @@
+on:
+  push:
+
+name: Build Release
+jobs:
+  release-binaries:
+    name: Release Go Binary
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux, linux, darwin, darwin, windows]
+        goarch: [amd64, arm64, amd64, arm64, amd64]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: RomanosTrechlis/actions-go-release@v0.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_name: v0.1.0
+          goos: ${{ matrix.goos }}
+          goarch: ${{ matrix.goarch }}
